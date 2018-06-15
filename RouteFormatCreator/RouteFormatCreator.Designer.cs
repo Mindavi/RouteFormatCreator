@@ -39,6 +39,12 @@
             this.cbDirection = new System.Windows.Forms.ComboBox();
             this.txtRangeType = new System.Windows.Forms.Label();
             this.txtDirection = new System.Windows.Forms.Label();
+            this.lblNameWarning = new System.Windows.Forms.Label();
+            this.lblLowerboundWarning = new System.Windows.Forms.Label();
+            this.lblUpperboundWarning = new System.Windows.Forms.Label();
+            this.lblRangeTypeWarning = new System.Windows.Forms.Label();
+            this.lblDirectionWarning = new System.Windows.Forms.Label();
+            this.btnAddStreet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudUpperbound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLowerbound)).BeginInit();
             this.SuspendLayout();
@@ -59,8 +65,9 @@
             this.tbStreetname.AccessibleName = "Street name";
             this.tbStreetname.Location = new System.Drawing.Point(85, 12);
             this.tbStreetname.Name = "tbStreetname";
-            this.tbStreetname.Size = new System.Drawing.Size(100, 20);
+            this.tbStreetname.Size = new System.Drawing.Size(120, 20);
             this.tbStreetname.TabIndex = 1;
+            this.tbStreetname.TextChanged += new System.EventHandler(this.tbStreetname_TextChanged);
             // 
             // txtStreetname
             // 
@@ -86,6 +93,7 @@
             this.nudUpperbound.Name = "nudUpperbound";
             this.nudUpperbound.Size = new System.Drawing.Size(120, 20);
             this.nudUpperbound.TabIndex = 5;
+            this.nudUpperbound.ValueChanged += new System.EventHandler(this.nudUpperbound_ValueChanged);
             // 
             // nudLowerbound
             // 
@@ -93,6 +101,7 @@
             this.nudLowerbound.Name = "nudLowerbound";
             this.nudLowerbound.Size = new System.Drawing.Size(120, 20);
             this.nudLowerbound.TabIndex = 6;
+            this.nudLowerbound.ValueChanged += new System.EventHandler(this.nudLowerbound_ValueChanged);
             // 
             // txtUpperbound
             // 
@@ -108,16 +117,18 @@
             this.cbRangeType.FormattingEnabled = true;
             this.cbRangeType.Location = new System.Drawing.Point(85, 89);
             this.cbRangeType.Name = "cbRangeType";
-            this.cbRangeType.Size = new System.Drawing.Size(121, 21);
+            this.cbRangeType.Size = new System.Drawing.Size(120, 21);
             this.cbRangeType.TabIndex = 8;
+            this.cbRangeType.SelectedIndexChanged += new System.EventHandler(this.cbRangeType_SelectedIndexChanged);
             // 
             // cbDirection
             // 
             this.cbDirection.FormattingEnabled = true;
             this.cbDirection.Location = new System.Drawing.Point(85, 117);
             this.cbDirection.Name = "cbDirection";
-            this.cbDirection.Size = new System.Drawing.Size(121, 21);
+            this.cbDirection.Size = new System.Drawing.Size(120, 21);
             this.cbDirection.TabIndex = 9;
+            this.cbDirection.SelectedIndexChanged += new System.EventHandler(this.cbDirection_SelectedIndexChanged);
             // 
             // txtRangeType
             // 
@@ -137,11 +148,72 @@
             this.txtDirection.TabIndex = 11;
             this.txtDirection.Text = "Direction";
             // 
+            // lblNameWarning
+            // 
+            this.lblNameWarning.AutoSize = true;
+            this.lblNameWarning.Location = new System.Drawing.Point(224, 18);
+            this.lblNameWarning.Name = "lblNameWarning";
+            this.lblNameWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblNameWarning.TabIndex = 12;
+            this.lblNameWarning.Text = ".";
+            // 
+            // lblLowerboundWarning
+            // 
+            this.lblLowerboundWarning.AutoSize = true;
+            this.lblLowerboundWarning.Location = new System.Drawing.Point(224, 38);
+            this.lblLowerboundWarning.Name = "lblLowerboundWarning";
+            this.lblLowerboundWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblLowerboundWarning.TabIndex = 13;
+            this.lblLowerboundWarning.Text = ".";
+            // 
+            // lblUpperboundWarning
+            // 
+            this.lblUpperboundWarning.AutoSize = true;
+            this.lblUpperboundWarning.Location = new System.Drawing.Point(224, 64);
+            this.lblUpperboundWarning.Name = "lblUpperboundWarning";
+            this.lblUpperboundWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblUpperboundWarning.TabIndex = 14;
+            this.lblUpperboundWarning.Text = ".";
+            // 
+            // lblRangeTypeWarning
+            // 
+            this.lblRangeTypeWarning.AutoSize = true;
+            this.lblRangeTypeWarning.Location = new System.Drawing.Point(224, 92);
+            this.lblRangeTypeWarning.Name = "lblRangeTypeWarning";
+            this.lblRangeTypeWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblRangeTypeWarning.TabIndex = 15;
+            this.lblRangeTypeWarning.Text = ".";
+            // 
+            // lblDirectionWarning
+            // 
+            this.lblDirectionWarning.AutoSize = true;
+            this.lblDirectionWarning.Location = new System.Drawing.Point(224, 120);
+            this.lblDirectionWarning.Name = "lblDirectionWarning";
+            this.lblDirectionWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblDirectionWarning.TabIndex = 16;
+            this.lblDirectionWarning.Text = ".";
+            // 
+            // btnAddStreet
+            // 
+            this.btnAddStreet.Location = new System.Drawing.Point(416, 115);
+            this.btnAddStreet.Name = "btnAddStreet";
+            this.btnAddStreet.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStreet.TabIndex = 17;
+            this.btnAddStreet.Text = "Add street";
+            this.btnAddStreet.UseVisualStyleBackColor = true;
+            this.btnAddStreet.Click += new System.EventHandler(this.btnAddStreet_Click);
+            // 
             // RouteFormatCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 649);
+            this.Controls.Add(this.btnAddStreet);
+            this.Controls.Add(this.lblDirectionWarning);
+            this.Controls.Add(this.lblRangeTypeWarning);
+            this.Controls.Add(this.lblUpperboundWarning);
+            this.Controls.Add(this.lblLowerboundWarning);
+            this.Controls.Add(this.lblNameWarning);
             this.Controls.Add(this.txtDirection);
             this.Controls.Add(this.txtRangeType);
             this.Controls.Add(this.cbDirection);
@@ -175,6 +247,12 @@
         private System.Windows.Forms.ComboBox cbDirection;
         private System.Windows.Forms.Label txtRangeType;
         private System.Windows.Forms.Label txtDirection;
+        private System.Windows.Forms.Label lblNameWarning;
+        private System.Windows.Forms.Label lblLowerboundWarning;
+        private System.Windows.Forms.Label lblUpperboundWarning;
+        private System.Windows.Forms.Label lblRangeTypeWarning;
+        private System.Windows.Forms.Label lblDirectionWarning;
+        private System.Windows.Forms.Button btnAddStreet;
     }
 }
 
