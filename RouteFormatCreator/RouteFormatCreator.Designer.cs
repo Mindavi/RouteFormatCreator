@@ -45,6 +45,7 @@
             this.lblRangeTypeWarning = new System.Windows.Forms.Label();
             this.lblDirectionWarning = new System.Windows.Forms.Label();
             this.btnAddStreet = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudUpperbound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLowerbound)).BeginInit();
             this.SuspendLayout();
@@ -195,19 +196,30 @@
             // 
             // btnAddStreet
             // 
-            this.btnAddStreet.Location = new System.Drawing.Point(416, 115);
+            this.btnAddStreet.Location = new System.Drawing.Point(85, 144);
             this.btnAddStreet.Name = "btnAddStreet";
-            this.btnAddStreet.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStreet.Size = new System.Drawing.Size(120, 23);
             this.btnAddStreet.TabIndex = 17;
             this.btnAddStreet.Text = "Add street";
             this.btnAddStreet.UseVisualStyleBackColor = true;
             this.btnAddStreet.Click += new System.EventHandler(this.btnAddStreet_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(530, 141);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 18;
+            this.btnExport.Text = "Export list";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // RouteFormatCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 649);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnAddStreet);
             this.Controls.Add(this.lblDirectionWarning);
             this.Controls.Add(this.lblRangeTypeWarning);
@@ -253,6 +265,7 @@
         private System.Windows.Forms.Label lblRangeTypeWarning;
         private System.Windows.Forms.Label lblDirectionWarning;
         private System.Windows.Forms.Button btnAddStreet;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

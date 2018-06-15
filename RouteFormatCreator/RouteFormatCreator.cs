@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic;
+using System.Text;
 
 namespace RouteFormatCreator
 {
@@ -108,7 +108,7 @@ namespace RouteFormatCreator
             }
             else
             {
-                MessageBox.Show("Cannot add invalid streets");
+                MessageBox.Show("Cannot add invalid street");
             }
         }
 
@@ -116,5 +116,29 @@ namespace RouteFormatCreator
         {
             CheckValues();
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.Title = "Select a location to store the route format";
+            dialog.Filter = "csv file|*.csv";
+            DialogResult result = dialog.ShowDialog();
+            if (dialog.FileName == "" || result != DialogResult.OK)
+            {
+                return;
+            }
+
+            System.IO.FileStream fs = (System.IO.FileStream)dialog.OpenFile();
+
+            foreach (var street in lbStreets.Items)
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(street.ToString() + "\n");
+                fs.Write(bytes, 0, bytes.Length);
+            }
+
+            fs.Close();
+        }
     }
+
+
 }
