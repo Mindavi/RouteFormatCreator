@@ -91,17 +91,47 @@
             // nudUpperbound
             // 
             this.nudUpperbound.Location = new System.Drawing.Point(85, 62);
+            this.nudUpperbound.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudUpperbound.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudUpperbound.Name = "nudUpperbound";
             this.nudUpperbound.Size = new System.Drawing.Size(120, 20);
             this.nudUpperbound.TabIndex = 5;
+            this.nudUpperbound.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudUpperbound.ValueChanged += new System.EventHandler(this.nudUpperbound_ValueChanged);
             // 
             // nudLowerbound
             // 
             this.nudLowerbound.Location = new System.Drawing.Point(85, 36);
+            this.nudLowerbound.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudLowerbound.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLowerbound.Name = "nudLowerbound";
             this.nudLowerbound.Size = new System.Drawing.Size(120, 20);
             this.nudLowerbound.TabIndex = 6;
+            this.nudLowerbound.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLowerbound.ValueChanged += new System.EventHandler(this.nudLowerbound_ValueChanged);
             // 
             // txtUpperbound

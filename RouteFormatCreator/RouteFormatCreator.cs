@@ -30,34 +30,37 @@ namespace RouteFormatCreator
             lblNameWarning.Text = !emptyName ? "Valid" : "Fill in a name";
             lblNameWarning.ForeColor = !emptyName ? System.Drawing.Color.Green : System.Drawing.Color.Red;
             isValid &= !emptyName;
-            RangeType rangeType = (RangeType)Enum.Parse(typeof(RangeType), cbRangeType.SelectedItem.ToString());
-            
-            var evenLowerbound = (nudLowerbound.Value % 2 == 0);
-            var evenUpperbound = (nudUpperbound.Value % 2 == 0);
-            switch (rangeType)
+            if (cbRangeType.SelectedItem != null)
             {
-                case RangeType.All:
-                    // ranges are valid
-                    lblLowerboundWarning.Text = "Valid";
-                    lblLowerboundWarning.ForeColor = System.Drawing.Color.Green;
-                    lblUpperboundWarning.Text = "Valid";
-                    lblUpperboundWarning.ForeColor = System.Drawing.Color.Green;
-                    isValid &= true;
-                    break;
-                case RangeType.Even:
-                    lblLowerboundWarning.Text = evenLowerbound ? "Valid" : "Invalid";
-                    lblLowerboundWarning.ForeColor = evenLowerbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-                    lblUpperboundWarning.Text = evenUpperbound ? "Valid" : "Invalid";
-                    lblUpperboundWarning.ForeColor = evenUpperbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-                    isValid &= (evenLowerbound && evenLowerbound);
-                    break;
-                case RangeType.Uneven:
-                    lblLowerboundWarning.Text = !evenLowerbound ? "Valid" : "Invalid";
-                    lblLowerboundWarning.ForeColor = !evenLowerbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-                    lblUpperboundWarning.Text = !evenUpperbound ? "Valid" : "Invalid";
-                    lblUpperboundWarning.ForeColor = !evenUpperbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-                    isValid &= (!evenLowerbound && !evenLowerbound);
-                    break;
+                RangeType rangeType = (RangeType)Enum.Parse(typeof(RangeType), cbRangeType.SelectedItem.ToString());
+
+                var evenLowerbound = (nudLowerbound.Value % 2 == 0);
+                var evenUpperbound = (nudUpperbound.Value % 2 == 0);
+                switch (rangeType)
+                {
+                    case RangeType.All:
+                        // ranges are valid
+                        lblLowerboundWarning.Text = "Valid";
+                        lblLowerboundWarning.ForeColor = System.Drawing.Color.Green;
+                        lblUpperboundWarning.Text = "Valid";
+                        lblUpperboundWarning.ForeColor = System.Drawing.Color.Green;
+                        isValid &= true;
+                        break;
+                    case RangeType.Even:
+                        lblLowerboundWarning.Text = evenLowerbound ? "Valid" : "Invalid";
+                        lblLowerboundWarning.ForeColor = evenLowerbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                        lblUpperboundWarning.Text = evenUpperbound ? "Valid" : "Invalid";
+                        lblUpperboundWarning.ForeColor = evenUpperbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                        isValid &= (evenLowerbound && evenLowerbound);
+                        break;
+                    case RangeType.Uneven:
+                        lblLowerboundWarning.Text = !evenLowerbound ? "Valid" : "Invalid";
+                        lblLowerboundWarning.ForeColor = !evenLowerbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                        lblUpperboundWarning.Text = !evenUpperbound ? "Valid" : "Invalid";
+                        lblUpperboundWarning.ForeColor = !evenUpperbound ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                        isValid &= (!evenLowerbound && !evenLowerbound);
+                        break;
+                }
             }
 
             if (nudLowerbound.Value > nudUpperbound.Value)
@@ -66,7 +69,6 @@ namespace RouteFormatCreator
                 lblLowerboundWarning.ForeColor = System.Drawing.Color.Red;
                 isValid = false;
             }
-
 
             return isValid;
         }
